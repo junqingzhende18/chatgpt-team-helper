@@ -19,6 +19,8 @@ RUN npm run build-only --workspace=frontend
 FROM node:20-alpine AS backend-builder
 
 WORKDIR /app
+# 从构建阶段复制根 package.json
+COPY --from=backend-builder /app/package.json ./
 
 # 复制依赖清单（包含 workspaces）
 COPY package.json package-lock.json ./
