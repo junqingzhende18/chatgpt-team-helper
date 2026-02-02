@@ -59,6 +59,7 @@ COPY --from=backend-builder /app/package.json ./
 COPY --from=backend-builder /app/node_modules ./node_modules
 COPY --from=backend-builder /app/backend/src ./backend/src
 COPY --from=backend-builder /app/backend/package.json ./backend/
+COPY --from=backend-builder /app/backend/version.json ./backend/
 
 # 创建 nginx 配置
 RUN mkdir -p /etc/nginx/conf.d
